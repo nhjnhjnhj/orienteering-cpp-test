@@ -67,6 +67,30 @@ cpp/
 
 C++17 以降に対応したコンパイラが必要。
 
+### リポジトリの取得（git clone）※ macOS / Windows 共通
+
+1. **作業用フォルダをローカルに作る**
+   プロジェクトを置きたい場所に、任意の名前でフォルダを作る（Finder / エクスプローラーで作ってもよい）。
+   ターミナル（macOS）/ コマンドプロンプト（Windows）で作る場合：
+   ```bash
+   mkdir orienteering      # 好きな名前・場所でよい
+   cd orienteering         # 作ったフォルダに移動
+   ```
+
+2. **リポジトリをクローンする**
+   上で移動したフォルダの中で：
+   ```bash
+   git clone https://github.com/nhjnhjnhj/orienteering-cpp-test.git
+   cd orienteering-cpp-test   # クローンしてできたフォルダに移動
+   ```
+
+> **現在地について（重要）**
+> いま居る `orienteering-cpp-test/` フォルダの**直下**に、`main.cpp` や `Makefile`、`input/` などが
+> 展開されている（`cpp/` という入れ子フォルダにはならない）。
+> これは下の「ファイル構成」で示した **`cpp/` の中身そのもの**。
+> 以降の手順で「`cpp/` フォルダ」と書かれている箇所は、この**クローンしてできたフォルダ**
+> （`orienteering-cpp-test/`）に読み替えること。
+
 ### macOS（VSCode + C/C++拡張）
 
 1. **必要なツール**
@@ -77,7 +101,8 @@ C++17 以降に対応したコンパイラが必要。
    > 注：Gitを使えない人はコンパイラのインストールが必要
 
 2. **プロジェクトを開く**
-   VSCode で `cpp/` フォルダを開く。次のどちらかの方法で：
+   VSCode で `cpp/` フォルダを作成。
+   以下の方法で：
    - **方法A：ドラッグ&ドロップ**
      Finder で `cpp/` フォルダを、VSCode のウィンドウ（またはアイコン）にドラッグ&ドロップする。
    - **方法B：メニューから開く**
@@ -148,7 +173,7 @@ C++17 以降に対応したコンパイラが必要。
 ### コマンドライン（macOS / Linux / WSL）
 
 ```bash
-cd cpp
+cd orienteering-cpp-test   # クローンしてできたフォルダ（= cpp/ の中身）へ移動
 make           # ビルド
 ./orienteering # 実行
 make clean     # オブジェクトファイル削除

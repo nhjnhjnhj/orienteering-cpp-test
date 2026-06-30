@@ -64,6 +64,7 @@ competition2026/
 ### リポジトリの取得（git clone）※ macOS / Windows 共通
 
 1. **作業用フォルダをローカルに作る**
+
    プロジェクトを置きたい場所に、任意の名前でフォルダを作る（Finder / エクスプローラーで作ってもよい）。
    ターミナル（macOS）/ コマンドプロンプト（Windows）で作る場合：
    ```bash
@@ -72,6 +73,7 @@ competition2026/
    ```
 
 2. **リポジトリをクローンする**
+
    上で移動したフォルダの中で：
    ```bash
    git clone https://github.com/nhjnhjnhj/orienteering-cpp-test.git
@@ -94,7 +96,7 @@ competition2026/
      VSCode のメニュー `File` →「`Open Folder...`（フォルダを開く）」→ `orienteering-cpp-test ` フォルダを選択する。
 
 3. **ビルド & 実行（ターミナル経由）**
-   VSCode 統合ターミナル（`Ctrl + ` ` で開く）で：
+   - VSCode 統合ターミナル（`Ctrl + ` ` で開く）で：
    ```bash
    make run        # ビルドして実行
    ```
@@ -143,7 +145,7 @@ competition2026/
 
 ## トラブルシューティング
 
-### コード1で終了` / `CSV ファイルが開けません: input/landmarks.csv
+### 1. コード1で終了 / CSV ファイルが開けません: input/landmarks.csv
 
 実行時に上記エラーで終了する場合、**作業ディレクトリの指定ミス**が原因（Visual Studio で頻発）。
 
@@ -161,6 +163,6 @@ competition2026/
 - Visual Studio：プロパティ → `構成プロパティ` → `デバッグ` → 「作業ディレクトリ」を上記に修正。
   反映されない場合は「構成（Debug/Release）」「プラットフォーム（x64/Win32）」が実行中のものと一致しているか確認する。
 
-### 日本語が文字化けする（Windows コンソール）
+### 2. 日本語が文字化けする（Windows コンソール）
 
 `SetConsoleOutputCP(CP_UTF8)` で対策済み。それでも化ける場合は、実行前にコンソールで `chcp 65001` を実行する。

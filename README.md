@@ -3,7 +3,7 @@
 ## ファイル構成
 
 ```
-competition2026/
+orienteering-cpp-test/
 ├── const.h            # 共通定数（コントロール数の制約・目標値・GAパラメータ等）
 ├── csv_loader.h/cpp   # CSV ロード（landmarks/nodes/edges）
 ├── graph.h/cpp        # 道路ネットワーク + Dijkstra + 経路キャッシュ
@@ -74,7 +74,7 @@ competition2026/
 
 2. **リポジトリをクローンする**
 
-   上で移動したフォルダの中で：
+   上で移動した `competition2026` フォルダの中で：
    ```bash
    git clone https://github.com/nhjnhjnhj/orienteering-cpp-test.git
    cd orienteering-cpp-test   # クローンしてできたフォルダに移動

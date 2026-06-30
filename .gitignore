@@ -4,5 +4,5 @@
 orienteering
 orienteering.exe
 
-# 生成される出力（リポジトリに含めたくない場合はコメントを外す）
-# output/
+# 生成される出力（実行時に自動生成されるため追跡しない）
+output/

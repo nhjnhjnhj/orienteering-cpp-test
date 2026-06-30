@@ -1,9 +1,9 @@
-# Step 5 C++ 版
+# 進化計算コンペ2026　配布プログラム
 
 ## ファイル構成
 
 ```
-cpp/
+competition2026/
 ├── const.h            # 共通定数（コントロール数の制約・目標値・GAパラメータ等）
 ├── csv_loader.h/cpp   # CSV ロード（landmarks/nodes/edges）
 ├── graph.h/cpp        # 道路ネットワーク + Dijkstra + 経路キャッシュ
@@ -21,7 +21,7 @@ cpp/
 └── README.md
 ```
 
-## 入力データの形式（`input/`）
+### 入力データの形式（`input/`）
 
 事前に Python で生成した 3 つの CSV を読み込む。すべて UTF-8（BOM 可）/ ヘッダー行あり。
 
@@ -55,9 +55,11 @@ cpp/
 
 ---
 
-## ビルド方法
+### 出力データ（`output/`）
+- 中身は空
+- 実行後、best_course.jsonとfitness_history.csvが作られる。
 
-C++17 以降に対応したコンパイラが必要。
+## 環境構築 + ビルド方法
 
 ### リポジトリの取得（git clone）※ macOS / Windows 共通
 
@@ -141,7 +143,7 @@ C++17 以降に対応したコンパイラが必要。
 
 ## トラブルシューティング
 
-### `コード1で終了` / `CSV ファイルが開けません: input/landmarks.csv`
+### コード1で終了` / `CSV ファイルが開けません: input/landmarks.csv
 
 実行時に上記エラーで終了する場合、**作業ディレクトリの指定ミス**が原因（Visual Studio で頻発）。
 

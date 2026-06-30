@@ -77,7 +77,6 @@ orienteering-cpp-test/
    上で移動した `competition2026` フォルダの中で：
    ```bash
    git clone https://github.com/nhjnhjnhj/orienteering-cpp-test.git
-   cd orienteering-cpp-test   # クローンしてできたフォルダに移動
    ```
 
 ### macOS（VSCode + C/C++拡張）

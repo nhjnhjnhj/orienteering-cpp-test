@@ -193,3 +193,29 @@ make clean     # オブジェクトファイル削除
 - BOM 付き UTF-8 CSV にも対応済み（CSV 先頭の BOM を自動で除去）
 - Windows のコンソールでの日本語文字化けは、`main.cpp` 冒頭の `SetConsoleOutputCP(CP_UTF8)`（`_WIN32` のみ有効）で対策済み
 - 乱数シードは `const.h` の `RANDOM_SEED` で固定（再現性確保のため）
+
+---
+
+## トラブルシューティング
+
+### `コード1で終了` / `CSV ファイルが開けません: input/landmarks.csv`
+
+実行時に上記エラーで終了する場合、**作業ディレクトリの指定ミス**が原因（Visual Studio で頻発）。
+
+- プログラムは `input/landmarks.csv` のように **相対パス**で開く。基準は**実行時の作業ディレクトリ**。
+- ありがちな間違い：作業ディレクトリに `input` フォルダ**そのもの**を指定してしまう。
+  ```
+  作業ディレクトリ = C:\orienteering\input     ← ✗
+   → 探しに行くのは C:\orienteering\input\input\landmarks.csv（input が二重）→ 失敗
+  ```
+- 正しくは、`input` フォルダの**親（input を含むフォルダ）**を指定する。
+  ```
+  作業ディレクトリ = C:\orienteering           ← ◯
+   → C:\orienteering\input\landmarks.csv に正しく到達
+  ```
+- Visual Studio：プロパティ → `構成プロパティ` → `デバッグ` → 「作業ディレクトリ」を上記に修正。
+  反映されない場合は「構成（Debug/Release）」「プラットフォーム（x64/Win32）」が実行中のものと一致しているか確認する。
+
+### 日本語が文字化けする（Windows コンソール）
+
+`SetConsoleOutputCP(CP_UTF8)` で対策済み。それでも化ける場合は、実行前にコンソールで `chcp 65001` を実行する。

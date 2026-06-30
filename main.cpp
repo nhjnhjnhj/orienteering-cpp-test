@@ -19,6 +19,10 @@
 #include <set>
 #include <string>
 
+#ifdef _WIN32
+#include <windows.h>  // Windows のみ：コンソールを UTF-8 表示にするため
+#endif
+
 using namespace orienteering;
 
 namespace {
@@ -108,6 +112,11 @@ void write_fitness_history_csv(
 } // namespace
 
 int main() {
+#ifdef _WIN32
+    // Windows コンソールを UTF-8 表示にする（日本語の文字化け防止）。
+    // ソースは UTF-8 で記述しているため、出力側もコードページを UTF-8 に揃える。
+    SetConsoleOutputCP(CP_UTF8);
+#endif
     try {
         std::cout << "データを読み込み中..." << std::endl;
 

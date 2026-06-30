@@ -191,4 +191,5 @@ make clean     # オブジェクトファイル削除
 
 - 文字コード：現状 **UTF-8 / LF** で記述。コンペ提出時は **Shift-JIS / CR+LF** に変換が必要
 - BOM 付き UTF-8 CSV にも対応済み（CSV 先頭の BOM を自動で除去）
+- Windows のコンソールでの日本語文字化けは、`main.cpp` 冒頭の `SetConsoleOutputCP(CP_UTF8)`（`_WIN32` のみ有効）で対策済み
 - 乱数シードは `const.h` の `RANDOM_SEED` で固定（再現性確保のため）

@@ -29,9 +29,6 @@ cpp/
 | 出力（JSON） | `output/best_course.json` |
 | 出力（CSV）  | `output/fitness_history.csv` |
 
-> 実行は `cpp/` ディレクトリから行う前提。相対パスはこの場所を基準とする。
-> `cpp/` フォルダ単体で自己完結しているため、別の環境へコピーする場合は `cpp/` まるごと持っていけば動く。
-
 ### 入力データの形式（`input/`）
 
 事前に Python で生成した 3 つの CSV を読み込む。すべて UTF-8（BOM 可）/ ヘッダー行あり。
@@ -64,31 +61,6 @@ cpp/
 | `elevation_change` | 標高差（+ 登り / − 下り） |
 | `elevation_gain` | 累積登り（m） |
 
-### 出力データの形式（`output/`）
-
-`output/` フォルダはプログラム実行時に自動生成される（存在しなくてよい）。
-
-**`best_course.json`** … 最良コースの結果
-
-| フィールド | 意味 |
-|---|---|
-| `n_controls` | コントロール数 |
-| `total_distance_m` | 総距離（m） |
-| `total_gain_m` | 累積登り（m） |
-| `estimated_time_min` | 推定所要時間（分） |
-| `fitness` | 適応度（重み付き和） |
-| `objectives` | 4 目的関数の値（`f_map` / `f_dist` / `f_time` / `f_route`） |
-| `weights` | 各目的の重み |
-| `controls` | 通過するコントロールの一覧（名前・種別・座標・魅力度） |
-| `course_nodes` | コースを構成するノード ID 列（`gate → … → gate`） |
-
-**`fitness_history.csv`** … 世代ごとの最良適応度の推移（収束グラフ用）
-
-| 列 | 意味 |
-|---|---|
-| `generation` | 世代番号 |
-| `best_fitness` | その世代までの最良適応度 |
-
 ---
 
 ## ビルド方法
@@ -97,13 +69,7 @@ C++17 以降に対応したコンパイラが必要。
 
 ### macOS（VSCode + C/C++拡張）
 
-> 注：Visual Studio for Mac は 2024年8月にサポート終了。代替として VSCode を使う。
-
 1. **必要なツール**
-   - Xcode Command Line Tools（`clang++` が含まれる）
-     ```bash
-     xcode-select --install
-     ```
    - Visual Studio Code
    - VSCode 拡張機能：
      - `C/C++`（Microsoft 製、IntelliSense 用）

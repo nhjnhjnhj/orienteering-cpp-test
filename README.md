@@ -74,11 +74,14 @@ C++17 以降に対応したコンパイラが必要。
    - VSCode 拡張機能：
      - `C/C++`（Microsoft 製、IntelliSense 用）
      - `C/C++ Extension Pack`（推奨）
+   > 注：Gitを使えない人はコンパイラのインストールが必要
 
 2. **プロジェクトを開く**
-   ```bash
-   code /path/to/orienteering-course/cpp
-   ```
+   VSCode で `cpp/` フォルダを開く。次のどちらかの方法で：
+   - **方法A：ドラッグ&ドロップ**
+     Finder で `cpp/` フォルダを、VSCode のウィンドウ（またはアイコン）にドラッグ&ドロップする。
+   - **方法B：メニューから開く**
+     VSCode のメニュー `File` →「`Open Folder...`（フォルダを開く）」→ `cpp/` フォルダを選択する。
 
 3. **ビルド & 実行（ターミナル経由）**
    VSCode 統合ターミナル（`Ctrl + ` ` で開く）で：

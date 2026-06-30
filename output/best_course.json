@@ -1,0 +1,28 @@
+{
+  "n_controls": 6,
+  "total_distance_m": 3430.5,
+  "total_gain_m": 47.5,
+  "estimated_time_min": 60.7,
+  "fitness": 0.551090,
+  "objectives": {
+    "f_map": 2.000,
+    "f_dist": 0.000,
+    "f_time": 0.702,
+    "f_route": 0.000
+  },
+  "weights": {
+    "f_map": 0.10,
+    "f_dist": 0.25,
+    "f_time": 0.50,
+    "f_route": 0.25
+  },
+  "controls": [
+    {"name": "牛久保あやめ公園", "feature": "park", "lat": 35.5631773, "lon": 139.5775581, "attraction_score": 0.80},
+    {"name": "横浜キャンパス図書館", "feature": "library", "lat": 35.5617244, "lon": 139.5752785, "attraction_score": 0.80},
+    {"name": "本格焼肉 ふくひろ亭", "feature": "restaurant", "lat": 35.5621863, "lon": 139.5726205, "attraction_score": 0.50},
+    {"name": "しゃぶしゃぶ 木曽路", "feature": "restaurant", "lat": 35.5569178, "lon": 139.5788174, "attraction_score": 0.50},
+    {"name": "大観覧車", "feature": "attraction", "lat": 35.5548736, "lon": 139.5783437, "attraction_score": 1.00},
+    {"name": "AOKI", "feature": "clothes", "lat": 35.5611952, "lon": 139.5801688, "attraction_score": 0.40}
+  ],
+  "course_nodes": [7368660689, 7368658444, 7368660671, 1303244922, 10721114732, 2639302690, 1303245512, 7368660689]
+}

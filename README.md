@@ -22,9 +22,6 @@ orienteering-cpp-test/
 ```
 
 ### 入力データの形式（`input/`）
-
-事前に Python で生成した 3 つの CSV を読み込む。すべて UTF-8（BOM 可）/ ヘッダー行あり。
-
 **`landmarks.csv`** … コントロール候補となる地点の一覧
 
 | 列 | 意味 |
@@ -103,7 +100,7 @@ orienteering-cpp-test/
 ### Windows（Visual Studio 2022 Community）
 
 1. **必要なもの**
-   - Visual Studio 2022 Community
+   - Visual Studio
    - インストール時に **「C++ によるデスクトップ開発」** ワークロードを選択
 
 2. **新規プロジェクト作成**

@@ -97,7 +97,7 @@ orienteering-cpp-test/
    make run        # ビルドして実行
    ```
 
-### Windows（Visual Studio 2022 Community）
+### Windows（Visual Studio）
 
 1. **必要なもの**
    - Visual Studio

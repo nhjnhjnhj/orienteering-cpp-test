@@ -166,6 +166,17 @@ int main() {
                             + ev.total_gain     / CLIMB_SPEED) * 60.0;
 
         std::cout << "\n========== Step 5 (C++) 完了 ==========" << std::endl;
+
+        // 最良個体の巡回順（正門スタート → コントロール → 正門ゴール）
+        std::cout << "巡回順（最良個体）:" << std::endl;
+        std::cout << "  スタート : 正門" << std::endl;
+        const auto& sel = ev.decoded.selected_indices;
+        for (size_t i = 0; i < sel.size(); ++i) {
+            const auto& lm = landmarks[sel[i]];
+            std::cout << "  " << lm.id << " : " << lm.name << std::endl;
+        }
+        std::cout << "  ゴール   : 正門" << std::endl;
+
         std::cout << std::fixed;
         std::cout << "実行時間          : " << std::setprecision(2) << elapsed << " 秒" << std::endl;
         std::cout << "最良解の fitness  : " << std::setprecision(4) << ev.fitness << std::endl;

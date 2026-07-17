@@ -14,7 +14,8 @@ orienteering-cpp-test/
 ├── input/             # 入力 CSV ファイル
 │   ├── landmarks.csv
 │   ├── nodes.csv
-│   └── edges.csv
+│   ├── edges.csv
+│   └── seimon.csv
 ├── output/            # 実行結果出力先
 │   ├── best_course.json
 │   └── fitness_history.csv
@@ -31,7 +32,6 @@ orienteering-cpp-test/
 | `feature` | 種別（例：`post_office`） |
 | `lat`, `lon` | 緯度・経度 |
 | `nearest_node` | 最寄りの道路ノード ID（`nodes.csv` の `node_id` と対応） |
-| `attraction_score` | 魅力度スコア |
 
 **`nodes.csv`** … 道路ネットワークの地点（交差点など）
 
@@ -49,6 +49,14 @@ orienteering-cpp-test/
 | `length_m` | 道の長さ（m） |
 | `elevation_change` | 標高差（+ 登り / − 下り） |
 | `elevation_gain` | 累積登り（m） |
+
+**`seimon.csv`** … スタート・ゴール地点（正門）の座標
+
+| 列 | 意味 |
+|---|---|
+| `lat`, `lon` | 緯度・経度 |
+
+先頭の有効な 1 行のみを使用する。
 
 ---
 

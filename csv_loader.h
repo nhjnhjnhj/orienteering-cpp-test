@@ -17,7 +17,6 @@ struct Landmark {
     double       lat;
     double       lon;
     long long    nearest_node;
-    double       attraction_score;
 };
 
 struct Node {
@@ -35,6 +34,12 @@ struct Edge {
     double    elevation_gain;
 };
 
+// スタート・ゴール地点（正門の座標）
+struct Gate {
+    double lat;
+    double lon;
+};
+
 // ============================================================
 // CSV ロード関数
 // ============================================================
@@ -42,6 +47,7 @@ struct Edge {
 std::vector<Landmark> load_landmarks(const std::string& path);
 std::vector<Node>     load_nodes(const std::string& path);
 std::vector<Edge>     load_edges(const std::string& path);
+Gate                  load_gate(const std::string& path);
 
 } // namespace orienteering
 

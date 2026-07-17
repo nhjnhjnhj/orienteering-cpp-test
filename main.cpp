@@ -77,8 +77,7 @@ void write_best_course_json(
         ofs << "\"name\": \""    << lm.name                 << "\", ";
         ofs << "\"feature\": \"" << lm.feature              << "\", ";
         ofs << "\"lat\": "       << fmt(lm.lat, 7)          << ", ";
-        ofs << "\"lon\": "       << fmt(lm.lon, 7)          << ", ";
-        ofs << "\"attraction_score\": " << fmt(lm.attraction_score, 2);
+        ofs << "\"lon\": "       << fmt(lm.lon, 7);
         ofs << "}";
         if (i + 1 < d.selected_indices.size()) ofs << ",";
         ofs << "\n";
@@ -123,6 +122,7 @@ int main() {
         auto landmarks = load_landmarks(DATA_DIR + "/landmarks.csv");
         auto nodes     = load_nodes    (DATA_DIR + "/nodes.csv");
         auto edges     = load_edges    (DATA_DIR + "/edges.csv");
+        auto gate      = load_gate     (DATA_DIR + "/seimon.csv");
 
         const int N = static_cast<int>(landmarks.size());
         std::cout << "  候補数: " << N
@@ -131,7 +131,7 @@ int main() {
                   << "件" << std::endl;
 
         Graph     graph(nodes, edges);
-        long long gate_node = graph.find_nearest_node(GATE_LAT, GATE_LON);
+        long long gate_node = graph.find_nearest_node(gate.lat, gate.lon);
 
         // 最短経路の事前計算（ゲート + 全ランドマークの nearest_node を起点に）
         std::cout << "  最短経路を事前計算中..." << std::endl;

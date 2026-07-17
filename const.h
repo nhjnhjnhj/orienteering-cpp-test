@@ -32,10 +32,10 @@ constexpr double PENALTY      = DBL_MAX;   // 無効解へのペナルティ（�
 // ============================================================
 // 重み設定（4指標を重み付き和で集約。合計 1.0）
 // ============================================================
-constexpr double W_MAP   = 0.10;
-constexpr double W_DIST  = 0.25;
-constexpr double W_TIME  = 0.50;
-constexpr double W_ROUTE = 0.25;
+constexpr double W_MAP   = 0.50;
+constexpr double W_DIST  = 0.10;
+constexpr double W_TIME  = 0.25;
+constexpr double W_ROUTE = 0.15;
 
 // ============================================================
 // GA のハイパーパラメータ

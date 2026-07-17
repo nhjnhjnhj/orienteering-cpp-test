@@ -59,7 +59,7 @@ const Chromosome& tournament_select(
 // ============================================================
 // 交叉
 //   選択パート：一様交叉
-//   順序パート：一点交叉
+//   順序パート：OX（順序交叉／順列を保存）
 // ============================================================
 std::pair<Chromosome, Chromosome> crossover(
     const Chromosome& parent1,
@@ -83,17 +83,36 @@ std::pair<Chromosome, Chromosome> crossover(
         }
     }
 
-    // 順序パート：一点交叉
-    std::uniform_int_distribution<int> dist_cx(1, MAX_CONTROLS - 1);
-    int cx = dist_cx(rng);
-    for (int i = 0; i < cx; ++i) {
-        c1[N + i] = parent1[N + i];
-        c2[N + i] = parent2[N + i];
-    }
-    for (int i = cx; i < MAX_CONTROLS; ++i) {
-        c1[N + i] = parent2[N + i];
-        c2[N + i] = parent1[N + i];
-    }
+    // 順序パート：OX（順序交叉）
+    std::uniform_int_distribution<int> dist_cut(0, MAX_CONTROLS);
+    int a = dist_cut(rng);
+    int b = dist_cut(rng);
+    if (a > b) std::swap(a, b);
+
+    auto ox_fill = [&](Chromosome&       child,
+                       const Chromosome& parent_donor,
+                       const Chromosome& parent_filler) {
+        std::vector<char> used(MAX_CONTROLS, 0);
+
+        for (int i = a; i < b; ++i) {
+            int v         = parent_donor[N + i];
+            child[N + i]  = v;
+            used[v]       = 1;
+        }
+
+        int pos = b % MAX_CONTROLS;
+        for (int k = 0; k < MAX_CONTROLS; ++k) {
+            int v = parent_filler[N + (b + k) % MAX_CONTROLS];
+            if (used[v]) continue;
+            child[N + pos] = v;
+            used[v]        = 1;
+            pos = (pos + 1) % MAX_CONTROLS;
+        }
+    };
+
+    ox_fill(c1, parent1, parent2);
+    ox_fill(c2, parent2, parent1);
+
     return {c1, c2};
 }
 

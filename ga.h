@@ -26,7 +26,7 @@ const Chromosome& tournament_select(
     const std::vector<double>&     fitnesses,
     RNG&                           rng);
 
-// 交叉（選択パート：一様交叉 / 順序パート：一点交叉）
+// 交叉（選択パート：一様交叉 / 順序パート：OX＝順序交叉）
 std::pair<Chromosome, Chromosome> crossover(
     const Chromosome& parent1,
     const Chromosome& parent2,

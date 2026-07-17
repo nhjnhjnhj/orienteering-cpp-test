@@ -48,7 +48,7 @@ const Chromosome& tournament_select(
     double best_fit = std::numeric_limits<double>::max();
     for (int i = 0; i < TOURNAMENT_SIZE; ++i) {
         int idx = dist(rng);
-        if (fitnesses[idx] < best_fit) {
+        if (fitnesses[idx] <= best_fit) {
             best_fit = fitnesses[idx];
             best     = idx;
         }

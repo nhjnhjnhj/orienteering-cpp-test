@@ -1,6 +1,7 @@
 #ifndef CONST_H
 #define CONST_H
 
+#include <cfloat>
 #include <string>
 
 namespace orienteering {
@@ -26,7 +27,7 @@ constexpr double T_TARGET     = 60.0;     // 目標所要時間（分）
 constexpr double WALK_SPEED   = 4020.0;   // 平地の歩行速度（m/時）
 constexpr double CLIMB_SPEED  = 300.0;    // 登り坂の速度換算値（m/時）
 constexpr double ROUTE_TARGET = 50.0;     // 累積登り高低差の許容値（m）
-constexpr double PENALTY      = 99999.0;  // 無効解へのペナルティ
+constexpr double PENALTY      = DBL_MAX;   // 無効解へのペナルティ（実値では到達し得ないセンチネル）
 
 // ============================================================
 // 重み設定（4指標を重み付き和で集約。合計 1.0）

@@ -63,28 +63,35 @@ double f_map(int n_controls) {
 // ============================================================
 // f_dist：コントロール地点が密集していないか
 // 緯度経度をメートル換算した簡易ユークリッド距離で評価
+// 各地点ペアを1回だけ計算し、地点ペア数（nC2）で平均する
 // ============================================================
 double f_dist(
     const std::vector<int>&      selected_indices,
     const std::vector<Landmark>& landmarks)
 {
     const int n = static_cast<int>(selected_indices.size());
-    double penalty = 0.0;
 
-    for (int i = 0; i < n; ++i) {
+    if (n < 2) {
+        return 0.0;
+    }
+    double penalty = 0.0;
+    for (int i = 0; i < n - 1; ++i) {
         const auto& a = landmarks[selected_indices[i]];
-        for (int j = 0; j < n; ++j) {
-            if (i == j) continue;
+        for (int j = i + 1; j < n; ++j) {
             const auto& b = landmarks[selected_indices[j]];
 
+            const double mean_lat = (a.lat + b.lat) / 2.0;
             double dlat = (a.lat - b.lat) * METERS_PER_DEGREE;
             double dlon = (a.lon - b.lon) * METERS_PER_DEGREE
-                          * std::cos(a.lat * PI / 180.0);
+                          * std::cos(mean_lat * PI / 180.0);
             double d_ij = std::sqrt(dlat * dlat + dlon * dlon);
             penalty += std::max(0.0, D_MIN - d_ij);
         }
     }
-    return penalty / static_cast<double>(std::max(n, 1));
+
+    // 地点ペア数 nC2 = n*(n-1)/2 で正規化（ペア1組当たりの平均密集ペナルティ）
+    const double n_pairs = static_cast<double>(n) * (n - 1) / 2.0;
+    return penalty / n_pairs;
 }
 
 // ============================================================
